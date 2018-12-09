@@ -1,5 +1,5 @@
 compilar .s
-nasm -f elf32 loader.s
+nasm -f elf loader.s
 
 compilar .ld junto al .o
 ld -T link.ld -melf_i386 loader.o -o kernel.elf
@@ -23,3 +23,8 @@ generar iso
                 -boot-info-table                \
                 -o os.iso                       \
                 iso
+
+compilar C (gcc)
+    -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles
+    -nodefaultlibs
+    -Wall -Wextra -Werror
